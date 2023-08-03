@@ -15,18 +15,18 @@ const firebaseConfig = {
   storageBucket: "realtimedb-a17ed.appspot.com",
   messagingSenderId: "860885717482",
   appId: "1:860885717482:web:1665503e268812b8ad6293",
-  measurementId: "G-944W4BVR6H"
+  measurementId: "G-944W4BVR6H",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-function writeUserData(userId, name, email, imageUrl) {
-  const db = getDatabase();
-  set(ref(db, 'usersProfile/' + userId), {
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
+
+
+
+
+
+
