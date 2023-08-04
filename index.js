@@ -22,11 +22,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app);
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  const reference = ref(db, 'users/' + userId);
 
+  set(reference, {
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
 
-
-
-
-
+writeUserData("4101083", "Nakorn Tantrirungsee", "nakorn_palm@yahoo.com", "https://google.com");
