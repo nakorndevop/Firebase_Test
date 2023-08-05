@@ -37,4 +37,5 @@ function writeUserData(lineUserId, name, station, isStretcherBearer, isOnDuty, p
   });
 }
 
-writeUserData("A002", "Nopporn", "OPD", "google.com", "no", "no");
+writeUserData("A003", "Onanong", "OPD", "google.com", "no", "yes");
+
