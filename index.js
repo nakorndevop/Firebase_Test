@@ -37,7 +37,7 @@ function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer,
   });
 }
 
-function writeJobData(jobId, bearerName, start, destination, status, startTime, finishTime) {
+function writeJobData(jobId, bearerName, start, destination, status, startTimestamp, finishTimestamp) {
   const db = getDatabase();
   const reference = ref(db, 'job/' + jobId);
   set(reference, {
@@ -45,8 +45,8 @@ function writeJobData(jobId, bearerName, start, destination, status, startTime, 
     start: start,
     destination: destination,
     status: status,
-    startTime: startTime,
-    finishTime: finishTime,
+    startTimestamp: startTimestamp,
+    finishTimestamp: finishTimestamp,
   });
 }
 
