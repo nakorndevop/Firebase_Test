@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 import liff from '@line/liff';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,6 +29,7 @@ function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer,
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
+    lineUserId: lineUserId,
     displayName: name,
     station: station,
     isStretcherBearer: isStretcherBearer,
@@ -48,6 +49,10 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
     startTimestamp: startTimestamp,
     finishTimestamp: finishTimestamp,
   });
+}
+
+function checkDataExist () {
+
 }
 
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
@@ -72,6 +77,9 @@ liff.init({
     })
       .then((profileResponse) => profileResponse.json())
       .then((profileJSON) => {
+
+        //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
+
         document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
         document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
