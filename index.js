@@ -53,7 +53,7 @@ liff.init({
       })
         .then((profileResponse) => profileResponse.json())
         .then((profileJSON) => {
-          writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
+          //writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
           
           document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
           document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
