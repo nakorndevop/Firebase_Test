@@ -38,6 +38,7 @@ function writeUserData(lineUserId, name, isStretcherBearer, isOnDuty) {
 
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
+  withLoginOnExternalBrowser: true,
 })
   .then(() => {
       // start to use LIFF's api
