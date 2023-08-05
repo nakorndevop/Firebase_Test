@@ -37,5 +37,18 @@ function writeUserData(lineUserId, name, station, isStretcherBearer, isOnDuty, p
   });
 }
 
-writeUserData("A003", "Onanong", "OPD", "google.com", "no", "yes");
+//writeUserData("A004", "Phuthirat", "OPD", "yes", "google.com", "no");
 
+liff.init({
+  liffId: '2000215406-oapqAqqk', // Use own liffId
+  withLoginOnExternalBrowser: true,
+})
+  .then(() => {
+      // start to use LIFF's api
+      const accessToken = liff.getAccessToken();
+      console.log(accessToken);
+
+  })
+  .catch((err) => {
+      console.log(err);
+  });
