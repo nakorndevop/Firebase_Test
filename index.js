@@ -24,18 +24,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-
-
-liff.init({
-  liffId: '2000215406-oapqAqqk', // Use own liffId
-  withLoginOnExternalBrowser: true,
-})
-  .then(() => {
-      // start to use LIFF's api
-      const accessToken = liff.getAccessToken();
-
-      // Write Database
-function writeUserData(lineUserId, name, pictureUrl, isStretcherBearer, isOnDuty) {
+// Write Database
+function writeUserData(lineUserId, name, station, isStretcherBearer, isOnDuty, pictureUrl) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
@@ -47,24 +37,4 @@ function writeUserData(lineUserId, name, pictureUrl, isStretcherBearer, isOnDuty
   });
 }
 
-      // Check accessToken
-      fetch('https://api.line.me/v2/profile', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((profileResponse) => profileResponse.json())
-        .then((profileJSON) => {
-          writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
-          
-          document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
-          document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
-          document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
-          
-        });
-  })
-  .catch((err) => {
-      console.log(err);
-  });
-
-console.log("Hello");
+writeUserData("A001", "Nakorn", "OPD", "google.com", "yes", "yes");
