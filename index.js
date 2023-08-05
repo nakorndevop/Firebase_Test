@@ -2,8 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, set } from "firebase/database";
-
-// Import LIFF
 import liff from '@line/liff';
 
 // TODO: Add SDKs for Firebase products that you want to use
