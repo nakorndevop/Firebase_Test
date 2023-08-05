@@ -64,6 +64,19 @@ liff.init({
       const accessToken = liff.getAccessToken();
       console.log(accessToken);
 
+     //Get profile from Line server
+     fetch('https://api.line.me/v2/profile', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((profileResponse) => profileResponse.json())
+      .then((profileJSON) => {
+        document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
+        document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
+        document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
+      });     
+
   })
   .catch((err) => {
       console.log(err);
