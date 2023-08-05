@@ -37,8 +37,24 @@ function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer,
   });
 }
 
+function writeJobData(jobId, bearerName, start, destination, status, startTime, finishTime) {
+  const db = getDatabase();
+  const reference = ref(db, 'job/' + jobId);
+  set(reference, {
+    bearerName: bearerName,
+    start: start,
+    destination: destination,
+    status: status,
+    startTime: startTime,
+    finishTime: finishTime,
+  });
+}
+
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
+//writeJobData(jobId, bearerName, start, destination, status, startTime, finishTime);
+
+/*
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
   withLoginOnExternalBrowser: true,
@@ -52,3 +68,4 @@ liff.init({
   .catch((err) => {
       console.log(err);
   });
+*/
