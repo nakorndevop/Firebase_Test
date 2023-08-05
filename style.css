@@ -3,5 +3,9 @@ h1, h2 {
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
 }

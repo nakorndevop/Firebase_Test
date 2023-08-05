@@ -23,31 +23,40 @@
 
     <div>
     <p>คุณเป็นพนักงานเปลใช่หรือไม่</p>
-    <input type="radio" id="age1" name="age" value="30">
-    <label for="age1">ใช่</label><br>
-    <input type="radio" id="age2" name="age" value="60">
-    <label for="age2">ไม่ใช่</label>
+    <input type="radio" id="isStretcherBearer" name="stretcherBearer" value="1" onclick="showHideElement('ward','name')">
+    <label for="isStretcherBearer">ใช่</label><br>
+    <input type="radio" id="notStretcherBearer" name="stretcherBearer" value="0" onclick="showHideElement('name','ward')">
+    <label for="notStretcherBearer">ไม่ใช่</label>
     </div>
 
-    <div>
-    <p>Ward ที่ทำงานอยู่</p>
-  </div>
+    <div id="ward" class="hidden">
+      <div>
+      <p>Ward ที่ทำงานอยู่</p>
+      </div>
 
-  <div>
-  <input type="text">
-  </div>
-
-    <div>
-      <p>ชื่อ-นามสกุล</p>
+      <div>
+      <input type="text">
+      </div>
     </div>
 
+    <div id="name" class="hidden">
+      <div>
+        <p>ชื่อ-นามสกุล</p>
+      </div>
+
+      <div>
+      <input type="text">
+      </div>
     <div>
-    <input type="text">
-    </div>
 
   </div>
 
-  </div>
+  <script>
+    function showElement(show,hide) {
+      document.getElementById(show).className = "show";
+      document.getElementById(hide).className = "hidden";
+    }
+  </script>
 
 </body>
 </html>
