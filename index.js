@@ -16,7 +16,7 @@ const firebaseConfig = {
   storageBucket: "realtimedb-a17ed.appspot.com",
   messagingSenderId: "860885717482",
   appId: "1:860885717482:web:1665503e268812b8ad6293",
-  measurementId: "G-944W4BVR6H"
+  measurementId: "G-944W4BVR6H",
 };
 
 
@@ -26,16 +26,15 @@ const analytics = getAnalytics(app);
 
 // Initialize Database
 
-function writeUserData(userId, name, email, imageUrl) {
+function writeUserData(lineUserId, name, isStretcherBearer, isOnDuty) {
   const db = getDatabase();
-  const reference = ref(db, 'users/' + userId);
+  const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
-    username: name,
-    email: email,
-    profile_picture : imageUrl,
+    displayName: name,
+    station: station,
+    isStretcherBearer : isStretcherBearer,
+    isOnDuty : isOnDuty,
   });
 }
-
-writeUserData('001A', 'Nakorn', 'nakorn_palm@yahoo.com', 'www.google.com');
 
 console.log("Hello");
