@@ -24,8 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Initialize Database
-
+// Write Database
 function writeUserData(lineUserId, name, isStretcherBearer, isOnDuty) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
