@@ -24,7 +24,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Write Database
+
+
+liff.init({
+  liffId: '2000215406-oapqAqqk', // Use own liffId
+  withLoginOnExternalBrowser: true,
+})
+  .then(() => {
+      // start to use LIFF's api
+      const accessToken = liff.getAccessToken();
+
+      // Write Database
 function writeUserData(lineUserId, name, pictureUrl, isStretcherBearer, isOnDuty) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
@@ -37,14 +47,6 @@ function writeUserData(lineUserId, name, pictureUrl, isStretcherBearer, isOnDuty
   });
 }
 
-liff.init({
-  liffId: '2000215406-oapqAqqk', // Use own liffId
-  withLoginOnExternalBrowser: true,
-})
-  .then(() => {
-      // start to use LIFF's api
-      const accessToken = liff.getAccessToken();
-
       // Check accessToken
       fetch('https://api.line.me/v2/profile', {
         headers: {
@@ -53,7 +55,7 @@ liff.init({
       })
         .then((profileResponse) => profileResponse.json())
         .then((profileJSON) => {
-          //writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
+          writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
           
           document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
           document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
