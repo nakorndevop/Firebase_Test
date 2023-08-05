@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -11,6 +11,7 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyBK5qDYCIwcB3ox7V0aTebPIdRZAWlNTj4",
   authDomain: "realtimedb-a17ed.firebaseapp.com",
+  databaseURL: "https://realtimedb-a17ed-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "realtimedb-a17ed",
   storageBucket: "realtimedb-a17ed.appspot.com",
   messagingSenderId: "860885717482",
@@ -23,6 +24,17 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Initialize Database
-const db = getDatabase(app);
+
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  const reference = ref(db, 'users/' + userId)
+  set(ref(db, 'users/' + userId), {
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+writeUserData('001A', 'Nakorn', 'nakorn_palm@yahoo.com', 'www.google.com');
 
 console.log("Hello");
