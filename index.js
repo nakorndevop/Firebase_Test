@@ -31,7 +31,7 @@ function writeUserData(userId, name, email, imageUrl) {
   set(reference, {
     username: name,
     email: email,
-    profile_picture : imageUrl
+    profile_picture : imageUrl,
   });
 }
 
