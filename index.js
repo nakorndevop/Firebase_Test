@@ -16,8 +16,9 @@ const firebaseConfig = {
   storageBucket: "realtimedb-a17ed.appspot.com",
   messagingSenderId: "860885717482",
   appId: "1:860885717482:web:1665503e268812b8ad6293",
-  measurementId: "G-944W4BVR6H",
+  measurementId: "G-944W4BVR6H"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
