@@ -27,8 +27,8 @@ const analytics = getAnalytics(app);
 
 function writeUserData(userId, name, email, imageUrl) {
   const db = getDatabase();
-  const reference = ref(db, 'users/' + userId)
-  set(ref(db, 'users/' + userId), {
+  const reference = ref(db, 'users/' + userId);
+  set(reference, {
     username: name,
     email: email,
     profile_picture : imageUrl
