@@ -25,14 +25,15 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Write Database
-function writeUserData(lineUserId, name, isStretcherBearer, isOnDuty) {
+function writeUserData(lineUserId, name, pictureUrl, isStretcherBearer, isOnDuty) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
     displayName: name,
     station: station,
-    isStretcherBearer : isStretcherBearer,
-    isOnDuty : isOnDuty,
+    isStretcherBearer: isStretcherBearer,
+    isOnDuty: isOnDuty,
+    pictureUrl: pictureUrl,
   });
 }
 
@@ -52,12 +53,12 @@ liff.init({
       })
         .then((profileResponse) => profileResponse.json())
         .then((profileJSON) => {
-          writeUserData(profileJSON.userId, profileJSON.displayName, true, true);
-          /*
+          writeUserData(profileJSON.userId, profileJSON.displayName, profileJSON.pictureUrl, true, true);
+          
           document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
           document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
           document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
-          */
+          
         });
   })
   .catch((err) => {
