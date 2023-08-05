@@ -52,9 +52,9 @@ function writeJobData(jobId, bearerName, start, destination, status, startTime, 
 
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
-//writeJobData(jobId, bearerName, start, destination, status, startTime, finishTime);
+//writeJobData("job002", "Somchai", "OPD", "x-ray", "Finished", "12:15", "13:15");
 
-/*
+
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
   withLoginOnExternalBrowser: true,
@@ -68,4 +68,3 @@ liff.init({
   .catch((err) => {
       console.log(err);
   });
-*/
