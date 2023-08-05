@@ -25,7 +25,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Write Database
-function writeUserData(lineUserId, name, station, isStretcherBearer, isOnDuty, pictureUrl) {
+function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer, isOnDuty) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
@@ -37,7 +37,7 @@ function writeUserData(lineUserId, name, station, isStretcherBearer, isOnDuty, p
   });
 }
 
-//writeUserData("A004", "Phuthirat", "OPD", "yes", "google.com", "no");
+//writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
