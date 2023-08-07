@@ -93,9 +93,9 @@ liff.init({
 
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
 
-        document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
-        document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
-        document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
+        //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
+        //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
+        //document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
       });     
 
   })
