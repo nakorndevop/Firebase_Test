@@ -4,7 +4,7 @@ import './style.css';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, child, get } from "firebase/database";
 import liff from '@line/liff';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -54,17 +54,18 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
   });
 }
 
-function checkDataExist () {
-  const db = getDatabase();
-  const ref = db.ref('userProfile/');
+function checkDataExist (userId) {
 
-  // Attach an asynchronous callback to read the data at our posts reference
-  ref.on('value', (snapshot) => {
-
-    console.log(snapshot.val());
-  }, (errorObject) => {
-    console.log('The read failed: ' + errorObject.name);
-  }); 
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `userProfile/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log('Exist');
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
 
 }
 
@@ -80,7 +81,6 @@ liff.init({
   .then(() => {
       // start to use LIFF's api
       const accessToken = liff.getAccessToken();
-      console.log(accessToken);
 
      //Get profile from Line server
      fetch('https://api.line.me/v2/profile', {
@@ -91,7 +91,10 @@ liff.init({
       .then((profileResponse) => profileResponse.json())
       .then((profileJSON) => {
 
-        writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
+        
+        //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
+
+        checkDataExist (profileJSON.userId);
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
