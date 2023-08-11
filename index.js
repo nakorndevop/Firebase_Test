@@ -68,6 +68,10 @@ function checkDataExist (dataToCheck) {
   });
 }
 
+function showElement (show) {
+  document.getElementById(show).className = "show";
+}
+
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
 //writeJobData("job002", "Somchai", "OPD", "x-ray", "Finished", "12:15", "13:15");
@@ -93,7 +97,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
 
-        checkDataExist (profileJSON.userId);
+        checkDataExist (profileJSON.userId, showElement);
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
