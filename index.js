@@ -98,7 +98,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
 
-        checkDataExist (profileJSON.userId, showElement, 'createProfile');
+        checkDataExist ('Hello', showElement, 'createProfile');
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
