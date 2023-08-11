@@ -59,16 +59,13 @@ function checkDataExist (userId) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `userProfile/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      //console.log('Exist');
-      return true;
+      console.log('Exist');
     } else {
-      //console.log("No data available");
-      return false;
+      console.log("No data available");
     }
   }).catch((error) => {
     console.error(error);
   });
-
 }
 
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
