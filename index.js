@@ -54,13 +54,14 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
   });
 }
 
-function checkDataExist (dataToCheck) {
+function checkDataExist (dataToCheck, callBackFunction, elementId) {
 
   const dbRef = ref(getDatabase());
   get(child(dbRef, `userProfile/${dataToCheck}`)).then((snapshot) => {
     if (snapshot.exists()) {
       console.log('Exist');
     } else {
+      callBackFunction (elementId);
       console.log("No data available");
     }
   }).catch((error) => {
@@ -97,7 +98,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
 
-        checkDataExist (profileJSON.userId, showElement);
+        checkDataExist (profileJSON.userId, showElement, 'createProfile');
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
