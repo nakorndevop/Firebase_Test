@@ -59,9 +59,11 @@ function checkDataExist (userId) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `userProfile/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log('Exist');
+      //console.log('Exist');
+      return true;
     } else {
-      console.log("No data available");
+      //console.log("No data available");
+      return false;
     }
   }).catch((error) => {
     console.error(error);
@@ -94,7 +96,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
 
-        checkDataExist (profileJSON.userId);
+        console.log(checkDataExist (profileJSON.userId));
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
