@@ -28,16 +28,16 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Write Database
-function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer, isOnDuty) {
+function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer, isOnDuty, approvalStatus) {
   const db = getDatabase();
   const reference = ref(db, 'userProfile/' + lineUserId);
   set(reference, {
-    lineUserId: lineUserId,
     displayName: name,
     station: station,
     isStretcherBearer: isStretcherBearer,
     isOnDuty: isOnDuty,
     pictureUrl: pictureUrl,
+    approvalStatus: approvalStatus,
   });
 }
 
@@ -54,10 +54,10 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
   });
 }
 
-function checkDataExist (userId) {
+function checkDataExist (dataToCheck) {
 
   const dbRef = ref(getDatabase());
-  get(child(dbRef, `userProfile/${userId}`)).then((snapshot) => {
+  get(child(dbRef, `userProfile/${dataToCheck}`)).then((snapshot) => {
     if (snapshot.exists()) {
       console.log('Exist');
     } else {
@@ -91,9 +91,9 @@ liff.init({
       .then((profileJSON) => {
 
         
-        //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no");
+        //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
 
-        console.log(checkDataExist (profileJSON.userId));
+        checkDataExist (profileJSON.userId);
 
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
