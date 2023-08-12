@@ -84,6 +84,11 @@ function showElement (show) {
   document.getElementById(show).className = "show";
 }
 
+function showHideElement(show,hide) {
+  document.getElementById(show).className = "show";
+  document.getElementById(hide).className = "hidden";
+}
+
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
 //writeJobData("job002", "Somchai", "OPD", "x-ray", "Finished", "12:15", "13:15");
@@ -109,7 +114,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
         
-        writeStationList('ศัลยกรรมชาย', '100 เตียง', '2300', 'ศช ศัลย์ชาย ศัลยชาย');
+        //writeStationList('ศัลยกรรมชาย', '100 เตียง', '2300', 'ศช ศัลย์ชาย ศัลยชาย');
 
         checkDataExist ('Hello', showElement, 'createProfile');
 
