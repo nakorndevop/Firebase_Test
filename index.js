@@ -92,10 +92,8 @@ function checkUserExist (dataToCheck) {
       const starCountRef = ref(db, 'stationList/');
       onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
-        //console.log(data);
+        console.log(data);
       });     
-
-      console.log(data);
 
       console.log("No data available");
     }
