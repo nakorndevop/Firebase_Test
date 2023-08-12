@@ -111,7 +111,7 @@ liff.init({
       .then((profileJSON) => {
 
 
-        //listData ('stationList');
+        listData ('stationList');
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
         
