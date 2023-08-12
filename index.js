@@ -41,12 +41,13 @@ function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer,
   });
 }
 
-function writeStationList(stationId, stationName) {
+function writeStationList(stationName, stationBuilding, stationTel, stationKeyword) {
   const db = getDatabase();
-  const reference = ref(db, 'stationList/' + stationId);
+  const reference = ref(db, 'stationList/' + stationName);
   set(reference, {
     stationName: stationName,
     stationBuilding: stationBuilding,
+    stationTel: stationTel,
     stationKeyword: stationKeyword,
   });
 }
@@ -107,6 +108,8 @@ liff.init({
 
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
+        
+        writeStationList('ศัลยกรรมชาย', '100 เตียง', '2300', 'ศช ศัลย์ชาย ศัลยชาย');
 
         checkDataExist ('Hello', showElement, 'createProfile');
 
