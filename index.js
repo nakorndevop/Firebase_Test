@@ -4,7 +4,7 @@ import './style.css';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set, child, get } from "firebase/database";
+import { getDatabase, ref, set, child, get, onValue } from "firebase/database";
 import liff from '@line/liff';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -80,6 +80,15 @@ function checkDataExist (dataToCheck, callBackFunction, elementId) {
 
 function showElement (show) {
   document.getElementById(show).className = "show";
+}
+
+function listData  (ref1) {
+  const db = getDatabase();
+  const starCountRef = ref(db, ref1 +'/');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    updateStarCount(postElement, data);
+  });
 }
 
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
