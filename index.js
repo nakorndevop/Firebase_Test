@@ -108,7 +108,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
         
-        writeStationList('ศัลยกรรมหญิง', 'กายภาพบำบัด', '4310', 'ศญ ศัลย หญิง');
+        //writeStationList('ศัลยกรรมหญิง', 'กายภาพบำบัด', '4310', 'ศญ ศัลย หญิง');
 
         checkDataExist ('Hello', showElement, 'createProfile');
 
