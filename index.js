@@ -4,7 +4,7 @@ import './style.css';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set, child, get, query } from "firebase/database";
+import { getDatabase, ref, set, child, get, onValue } from "firebase/database";
 import liff from '@line/liff';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -78,15 +78,55 @@ function checkDataExist (dataToCheck, callBackFunction, elementId) {
   });
 }
 
+function checkUserExist (dataToCheck) {
+  const db = getDatabase();
+  const dbRef = ref(db);
+  get(child(dbRef, `userProfile/${dataToCheck}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log('Exist');
+    } else {
+      // Show form
+      document.getElementById('createProfile').className = "show";
+      
+      // List Staion
+      const starCountRef = ref(db, 'stationList/');
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        //console.log(data);
+      });     
+
+      console.log(data);
+
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+/*
 function showElement (show) {
   document.getElementById(show).className = "show";
 }
+*/
 
-function listData (ref1) {
+/*
+function listData (ref1, callBackFunction, elementId) {
   const db = getDatabase();
-  const mostViewedPosts = query(ref(db, ref1));
-  console.log(mostViewedPosts);
+  const starCountRef = ref(db, ref1+'/');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+    callBackFunction(data, elementId);
+  });
 }
+*/
+
+/*
+function createSelectList(data, elementId) {
+
+}
+*/
 
 //writeUserData("A004", "Phuthirat", "OPD", "google.com", "no", "yes");
 
@@ -111,13 +151,13 @@ liff.init({
       .then((profileJSON) => {
 
 
-        listData ('stationList');
+        //listData ('stationList');
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
         
         //writeStationList('ศัลยกรรมหญิง', 'กายภาพบำบัด', '4310', 'ศญ ศัลย หญิง');
 
-        checkDataExist ('Hello', showElement, 'createProfile');
+        checkUserExist ('Hello');
 
         console.log(profileJSON.userId);
 
