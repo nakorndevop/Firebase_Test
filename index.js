@@ -64,13 +64,12 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
   });
 }
 
-function checkDataExist (dataToCheck, callBackFunction, elementId) {
+function checkDataExist (dataToCheck) {
   const dbRef = ref(getDatabase());
   get(child(dbRef, `userProfile/${dataToCheck}`)).then((snapshot) => {
     if (snapshot.exists()) {
       console.log('Exist');
     } else {
-      callBackFunction (elementId);
       console.log("No data available");
     }
   }).catch((error) => {
@@ -92,7 +91,18 @@ function checkUserExist (dataToCheck) {
       const starCountRef = ref(db, 'stationList/');
       onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
+        
+        const wardList = Object.keys(data);
+
+        //wardList.forEach(createSelectList);
+
+        wardList.forEach((wardList) => {
+          let sentence = `I am ${wardList} a staff of Royal Suites.`;
+          console.log(sentence);
+        });
+
         console.log(data);
+        console.log(wardList);
       });     
 
       console.log("No data available");
