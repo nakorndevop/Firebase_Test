@@ -41,6 +41,15 @@ function writeUserData(lineUserId, name, station, pictureUrl, isStretcherBearer,
   });
 }
 
+function writeStationList(stationId, stationName) {
+  const db = getDatabase();
+  const reference = ref(db, 'stationList/' + stationId);
+  set(reference, {
+    stationName: stationName,
+    stationKeyword: stationKeyword,
+  });
+}
+
 function writeJobData(jobId, bearerName, start, destination, status, startTimestamp, finishTimestamp) {
   const db = getDatabase();
   const reference = ref(db, 'job/' + jobId);
