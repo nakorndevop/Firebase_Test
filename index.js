@@ -94,8 +94,6 @@ function checkUserExist (dataToCheck) {
         
         const wardList = Object.keys(data);
 
-        //wardList.forEach(createSelectList);
-
         wardList.forEach((wardList) => {
           let sentence = `I am ${wardList} a staff of Royal Suites.`;
           console.log(sentence);
