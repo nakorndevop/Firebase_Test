@@ -112,6 +112,8 @@ liff.init({
 
         checkDataExist ('Hello', showElement, 'createProfile');
 
+        console.log(profileJSON.userId);
+
         //document.getElementById('pictureUrl').src = profileJSON.pictureUrl;
         //document.getElementById('displayName').innerHTML = 'displayName: ' + profileJSON.displayName;
         //document.getElementById('userId').innerHTML = 'userId: ' + profileJSON.userId;
