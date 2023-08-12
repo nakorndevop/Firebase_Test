@@ -46,6 +46,7 @@ function writeStationList(stationId, stationName) {
   const reference = ref(db, 'stationList/' + stationId);
   set(reference, {
     stationName: stationName,
+    stationBuilding: stationBuilding,
     stationKeyword: stationKeyword,
   });
 }
