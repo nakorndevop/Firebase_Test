@@ -66,7 +66,6 @@ function writeJobData(jobId, bearerName, start, destination, status, startTimest
 }
 
 function checkDataExist (dataToCheck, callBackFunction, elementId) {
-
   const dbRef = ref(getDatabase());
   get(child(dbRef, `userProfile/${dataToCheck}`)).then((snapshot) => {
     if (snapshot.exists()) {
@@ -91,7 +90,7 @@ function showElement (show) {
 
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
-  withLoginOnExternalBrowser: true,
+  //withLoginOnExternalBrowser: true,
 })
   .then(() => {
       // start to use LIFF's api
@@ -109,7 +108,7 @@ liff.init({
         
         //writeUserData(profileJSON.userId, profileJSON.displayName, "opd", profileJSON.pictureUrl, "no", "no", true);
         
-        //writeStationList('ศัลยกรรมชาย', '100 เตียง', '2300', 'ศช ศัลย์ชาย ศัลยชาย');
+        writeStationList('ศัลยกรรมหญิง', 'กายภาพบำบัด', '4310', 'ศญ ศัลย หญิง');
 
         checkDataExist ('Hello', showElement, 'createProfile');
 
