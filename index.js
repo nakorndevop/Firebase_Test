@@ -52,7 +52,7 @@ function writeStationList(stationId, stationName) {
 
 function writeJobData(jobId, bearerName, start, destination, status, startTimestamp, finishTimestamp) {
   const db = getDatabase();
-  const reference = ref(db, 'job/' + jobId);
+  const reference = ref(db, 'jobList/' + jobId);
   set(reference, {
     bearerName: bearerName,
     start: start,
