@@ -141,7 +141,7 @@ function createSelectList(data, elementId) {
 
 liff.init({
   liffId: '2000215406-oapqAqqk', // Use own liffId
-  //withLoginOnExternalBrowser: true,
+  withLoginOnExternalBrowser: true,
 })
   .then(() => {
       // start to use LIFF's api
@@ -163,7 +163,10 @@ liff.init({
         
         //writeStationList('ศัลยกรรมหญิง', 'กายภาพบำบัด', '4310', 'ศญ ศัลย หญิง');
 
-        checkUserExist ('Hello');
+        if(profileJSON.userId) {
+          checkUserExist ('Hello');
+        }
+        
 
         console.log(profileJSON.userId);
 
